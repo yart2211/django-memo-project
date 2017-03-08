@@ -1,44 +1,51 @@
-РџСЂРё СЃРѕР·РґР°РЅРёРё РїСЂРѕРµРєС‚Р° РёСЃРїРѕР»СЊР·РѕРІР°Р»Р°СЃСЊ РїРѕСЃР»РµРґРЅСЏСЏ РІРµСЂСЃРёСЏ Django 1.10.4:
+Тестовый проект 'Менеджер заметок'
+При создании проекта использовалась последняя версия Django 1.10.4:
 Django==1.10.4
 
 ```
-## РЈСЃС‚Р°РЅРѕРІРєР°
+## Установка
 
-### 1. РЎРѕР·РґР°РЅРёРµ РІРёСЂС‚СѓР°Р»СЊРЅРѕРіРѕ РѕРєСЂСѓР¶РµРЅРёСЏ virtualenv
+### 1. Создание виртуального окружения virtualenv
 
 	mkdir /path/workspace
 	cd /path/workspace
 
-	python -m venv myenv
+	python -m venv memoenv
+
+	Запуск окружения
+	memoenv\Scripts\activate
 
 
-### 2. Р—Р°РіСЂСѓР·РєР° РїСЂРѕРµРєС‚Р°
+### 2. Загрузка проекта
 
-    cd /path/to/your/workspace
-    $ git clone git://github.com/kirpit/django-sample-app.git projectname && cd projectname
+    cd /path/workspace
+    git clone https://github.com/yart2211/django-memo-project memoproject
+    cd memoproject
 
-### 3. РўСЂРµР±РѕРІР°РЅРёСЏ
+### 3. Требования
 	
-	Р”Р»СЏ Р·Р°РіСЂСѓР·РєРё РІСЃРµС… РЅРµРѕР±С…РѕРґРёРјС‹С… РјРѕРґСѓР»РµР№ Рё С„СЂРµР№РјРІРѕСЂРєРѕРІ РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РїРѕР»РЅРёС‚СЊ РєРѕРјР°РЅРґСѓ
+	Для загрузки всех необходимых модулей и фреймворков необходимо выполнить команду
 	pip install -r requirements.txt
 
-### 3. РЎРѕР·РґР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РјРѕР¶РµС‚ Р·Р°С…РѕРґРёС‚СЊ РЅР° РёРЅС‚РµСЂС„РµР№СЃ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°.  
+### 3. Инициализация данных
+
+	Создание базы данных:
+	python manage.py migrate
+
+	Загрузка начальных данных (категории заметок по умочанию):
+	python manage.py loaddata defaultdata.json
+
+### 4. Создание пользователя, который может заходить на интерфейс администратора.  
 
 	python manage.py createsuperuser
 
-### 4. РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґР°РЅРЅС‹С…
 
-	РЎРѕР·РґР°РЅРёРµ Р±Р°Р·С‹ РґР°РЅРЅС‹С…:
-	python manage.py migrate
+### 5. Запуск
 
-	Р—Р°РіСЂСѓР·РєР° РЅР°С‡Р°Р»СЊРЅС‹С… РґР°РЅРЅС‹С… (РєР°С‚РµРіРѕСЂРёРё Р·Р°РјРµС‚РѕРє РїРѕ СѓРјРѕС‡Р°РЅРёСЋ):
-	python manage.py loaddata defaultdata.json
+	python manage.py runserver hostname:portnumber
 
-### 5. Р—Р°РїСѓСЃРє
-	python manage.py runserver
+	Интерфейс администратора:
+	http://hostname:portnumber/admin/
 
-	РРЅС‚РµСЂС„РµР№СЃ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°:
-	http://localhost:8000/admin/
-
-	РРЅС‚СЂРµС„РµР№СЃ 'РЎРїРёСЃРѕРє Р·Р°РјРµС‚РѕРє'
-	http://localhost:8000/memo/
+	Интрефейс 'Список заметок'
+	http://hostname:portnumber/memo/
