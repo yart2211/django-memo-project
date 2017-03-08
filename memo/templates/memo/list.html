@@ -1,0 +1,17 @@
+{% extends "memo/base.html" %}
+
+{% block resources %}
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static 'memo/libs/gridfilters/filter/Filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'memo/libs/gridfilters/filter/BooleanFilter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'memo/libs/gridfilters/filter/DateFilter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'memo/libs/gridfilters/filter/StringFilter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'memo/libs/gridfilters/GridFilters.js' %}"></script>
+    <script type="text/javascript" src="{% static 'memo/libs/gridfilters/GridFilters.js' %}"></script>
+    <script type="text/javascript" src="{% static 'memo/grid_list.js' %}"></script>
+{% endblock %}
+{% block title %} Заметки{% endblock %}
+{% block body %}
+    <div id="grid_list"></div>
+{% endblock %}
+

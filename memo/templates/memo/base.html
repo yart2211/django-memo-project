@@ -1,0 +1,18 @@
+<html><head>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'memo/style/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'memo/style/ext-all.css' %}" />
+<script type="text/javascript" src="{% static 'memo/libs/ext-base.js' %}"></script>
+<script type="text/javascript" src="{% static 'memo/libs/ext-all.js' %}"></script>
+{% block resources %} {% endblock %}
+<title>{% block title %}Заметки{% endblock %}</title>
+</head>
+<body>
+{% block header %}
+    <div class="header">
+        <a href="{% url 'memo:logout' %}" title="Выйти. Сменить пользователя"><div class="memo-logout-button"></div></a>
+    </div>
+{% endblock %}
+{% block body %} {% endblock %}
+</body>
+</html>

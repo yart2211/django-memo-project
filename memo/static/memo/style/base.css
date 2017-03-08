@@ -1,0 +1,123 @@
+body{
+    font-family: tahoma, arial, helvetica, sans-serif;
+}
+
+
+
+img.favorite_on, img.favorite_off,
+img.memo-delete, div.memo-edit, div.memo-card, add-small-icon {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+}
+
+img.favorite_on {
+    background-image: url(../images/favorite_on.gif);
+}
+
+img.favorite_off {
+    background-image: url(../images/favorite_off.gif);
+}
+
+img.memo-delete {
+    background-image: url(../images/delete.gif);
+}
+
+div.memo-edit{
+    background-image: url(../images/edit.gif);
+    cursor: pointer;
+    display: inline-block;
+}
+div.memo-card{
+    background-image: url(../images/card.gif);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.add-small-icon{
+    background-image: url(../images/add.gif);
+    !important;
+}
+
+.memo-add-button,
+.memo-list-button,
+.memo-edit-button {
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.auth-panel{
+    width:50%;
+    top: 25%;
+    left: 25%;
+    position:absolute;
+}
+
+.header{
+    width:100%;
+    height:18px;
+    background-color: #d3e0f0;
+    text-align: right;
+}
+
+.memo-logout-button{
+    background-image: url(../images/logout.png);
+    height: 16px;
+    width: 16px;
+    margin-right: 6px;
+    margin-top: 1px;
+    display: inline-block;
+}
+
+
+.memo-add-button{
+    background-image: url(../images/add_32.gif);
+}
+
+.memo-edit-button{
+    background-image: url(../images/edit_32.gif);
+}
+
+.memo-list-button{
+    background-image: url(../images/list_32.png);
+}
+
+.table-card{
+    width:100%;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: 12px;
+    line-height: normal;
+    border-collapse: collapse;
+}
+
+.table-card tr {
+    transition: background 0.2s ease-in;
+    width:100%;
+}
+
+.table-card th{
+    font-weight: bold;
+}
+
+.table-card th, .table-card td {
+    vertical-align: top;
+    padding: 2px;
+    border: 1px solid #b8cfee;
+}
+
+.table-card td {
+    width:100%;
+}
+
+.table-card tr:nth-child(even) {
+    background: #f6f6f6;
+}

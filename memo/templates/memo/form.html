@@ -1,0 +1,115 @@
+{% extends "memo/base.html" %}
+
+{% block resources %}
+    {% load staticfiles %}
+
+{% endblock %}
+{% block title %} {{ title }}{% endblock %}
+{% block body %}
+{% if error %}
+    {{ error }}
+{% else %}
+<script>
+    Ext.onReady(function() {
+        Ext.QuickTips.init();
+
+        var formPanel = new Ext.FormPanel({
+                frame: true,
+                title:"{{ title }}",
+                labelAlign: 'left',
+                buttonAlign: 'left',
+                labelWidth: 85,
+                width:"100%",
+                waitMsgTarget: true,
+
+                items: [
+                    new Ext.form.FieldSet({
+                        autoHeight: true,
+                        defaultType: 'textfield',
+                        items: [
+                            {
+                                fieldLabel: 'Заголовок',
+                                emptyText: 'заголовок',
+                                name: 'header',
+                                width:190,
+                                xtype: 'textfield',
+                                value: '{{ header }}'
+                            },
+                            {
+                                fieldLabel: 'Избранная',
+                                emptyText: 'Избранная',
+                                name: 'is_favorite',
+                                width:190,
+                                xtype: 'checkbox',
+                                uncheckedValue: false,
+                                checked: {{ is_favorite|default:"false"|lower }}
+                            },
+                            new Ext.form.ComboBox({
+                                fieldLabel: 'Категория',
+                                hiddenName:'category',
+                                store: new Ext.data.ArrayStore({
+                                    id: 0,
+                                    fields: [
+                                        'id',
+                                        'name'
+                                    ],
+                                    data: {{ category_list|safe }}
+                                }),
+                                value:{{ category_value|default:"null" }},
+                                valueField:'id',
+                                displayField:'name',
+                                typeAhead: true,
+                                mode: 'local',
+                                triggerAction: 'all',
+                                emptyText:'Выберите категорию...',
+                                selectOnFocus:true,
+                                width:190
+                            }),
+                            {
+                                fieldLabel: 'Содержание',
+                                emptyText: 'Содержание',
+                                name: 'content',
+                                width:600,
+                                height:300,
+                                boxMinWidth: 600,
+                                xtype: 'htmleditor',
+                                value: '{{ content|safe }}'
+
+                            }
+                        ]
+                    })
+                ]
+            });
+        var submit = formPanel.addButton({
+            text: 'Принять',
+            disabled:false,
+            align: 'left',
+            handler: function(){
+                formPanel.getForm().submit({
+                    url:'/memo/edit/',
+                    params: {object_id: "{{ object_id }}"},
+                    waitMsg:'Обработка данных..',
+                    submitEmptyText: false,
+                    failure: function(err){
+                        console.log(err);
+                    },
+                    success: function(form,response){
+                        console.log("success");
+                        console.log(response.response);
+                        result = JSON.parse(response.response.responseText);
+                        window.location = "/memo/"+result.uuid;
+                    },
+                    invalid: function(form, type){
+                        console.log(form);
+                        console.log(type);
+                    },
+                });
+            }
+        });
+        formPanel.render('form_container');
+    });
+    </script>
+{% endif %}
+    <div id="form_container"></div>
+{% endblock %}
+

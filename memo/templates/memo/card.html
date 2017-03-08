@@ -1,0 +1,35 @@
+{% extends "memo/base.html" %}
+{% block resources %}
+    {% load staticfiles %}
+
+{% endblock %}
+{% block title %} Заметка {{ object.header }}{% endblock %}
+{% block body %}
+    <script>
+
+    var content = [
+        '<table class="table-card">'+
+        '<tr><th>Действия:</th><td>' +
+            '<a href="{% url 'memo:list' %}" title="Перейти к списку заметок"><div class="memo-list-button" ></div></a>',
+            '<a href="{% url 'memo:form' object.id %}" title="Редактировать заметку"><div class="memo-edit-button" t></div></a>',
+            '<a href="{% url 'memo:form' 'new' %}" title="Регистрировать новую заметку"><div class="memo-add-button" ></div></a>',
+        '</td></tr>'+
+	    '<tr><th>Заголовок:</th><td><h2>{{ object.header }}</h2></td></tr>',
+	    '<tr><th>Категория:</th><td>{{ object.category.name}}</td></tr>',
+	    '<tr><th>Время регистрации: </th><td>{{ object.date|date:"d.m.Y  h:m" }}</td></tr>',
+        '<tr><th>Содержимое:</th><td>{{ object.content|safe }}</td></tr>'+
+        '</table>'
+];
+
+    Ext.onReady(function() {
+        new Ext.Panel({
+            title: "Карточка заметки " + "{{ object.header }}",
+            renderTo: "card_container",
+            width: "100%",
+            html: content.join('')
+        });
+    });
+    </script>
+    <div id="card_container"></div>
+{% endblock %}
+

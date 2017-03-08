@@ -1,0 +1,30 @@
+[
+  {
+    "model": "memo.CategoryMemo",
+    "pk": 1,
+    "fields": {
+      "name": "Ссылка"
+    }
+  },
+  {
+    "model": "memo.CategoryMemo",
+    "pk": 2,
+    "fields": {
+      "name": "Заметка"
+    }
+  },
+    {
+    "model": "memo.CategoryMemo",
+    "pk": 3,
+    "fields": {
+      "name": "Памятка"
+    }
+  },
+    {
+    "model": "memo.CategoryMemo",
+    "pk": 4,
+    "fields": {
+      "name": "Тестовая"
+    }
+  }
+]
